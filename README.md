@@ -60,8 +60,10 @@ git commit -m 'add {file}'
 git push origin main
 # 或 chezmoi 后面直接接 git 命令
 chezmoi git add {file}
-chezmoi git commit -m 'add {file}'
-chezmoi git push origin main"
+chezmoi git commit -- -m 'add {file}'
+chezmoi git push origin main
+
+# chezmoi git add . && chezmoi git commit -- -m "update" && chezmoi git push
 ```
 
 ## chezmoi 修改文件
@@ -147,6 +149,9 @@ $ chezmoi add --autotemplate ~/.gitconfig
 
 
 <!-- ## tips
+
+不建议用于管理家目录之外 https://github.com/twpayne/chezmoi/discussions/1510#discussioncomment-2627391
+
 -   config file，用于chezmoi自身的配置文件，默认为`~/.config/chezmoi/chezmoi.toml`。
 -   使用`chezmoi unmanaged`可以列举所有不归属chezmoi管理的文件。
 -   可以通过source state中的`.chezmoiignore`来显示阻止某些文件添加到chezmoi管理。
